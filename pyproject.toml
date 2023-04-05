@@ -6,6 +6,7 @@ authors = ["ProtKsen <protcenko.kseniya@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+aiogram = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.1.1"
