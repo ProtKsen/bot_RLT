@@ -6,6 +6,9 @@ __pycache__/
 # VS code 
 .vscode
 
+# database
+dump/
+data/
 # C extensions
 *.so
 
