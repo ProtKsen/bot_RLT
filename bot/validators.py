@@ -1,4 +1,8 @@
+import datetime
 import json
+
+
+ALLOWED_GROUP_TYPE = ['hour', 'day', 'month']
 
 
 def is_input_valid(message):
@@ -8,7 +12,15 @@ def is_input_valid(message):
     except json.JSONDecodeError:
         return False
 
-    if ('dt_from' in data) and ('dt_upto' in data) and ('group_type' in data):
-        return True
+    is_fields_valid = ('dt_from' in data) and ('dt_upto' in data) and ('group_type' in data)
 
-    return False
+    if is_fields_valid:
+        try:
+            datetime.datetime.fromisoformat(data['dt_from'])
+            datetime.datetime.fromisoformat(data['dt_from'])
+            if data['group_type'] not in ALLOWED_GROUP_TYPE:
+                raise ValueError
+        except ValueError:
+            return False
+
+    return True
