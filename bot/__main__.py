@@ -7,7 +7,7 @@ from aiogram.dispatcher.filters import Command
 from bot.config import config
 from bot.db import get_db
 from bot.validators import is_input_valid
-from datetime import datetime
+from datetime import datetime, timedelta
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
@@ -39,13 +39,13 @@ async def get_data(message: types.Message):
             format = "%Y-%m-%dT%H:00:00"
 
         query = db.sample_collection.aggregate([
-            {'$match': {'dt': {'$gte': start, '$lt': stop}}},
+            {'$match': {'dt': {'$gte': start, '$lte': stop}}},
             {'$densify': {
                 'field': 'dt',
                 'range': {
                     'step': 1,
                     'unit': request['group_type'],
-                    'bounds': [start, stop]}}
+                    'bounds': [start, stop + timedelta(seconds=1)]}}
             },
             {'$fill': {
                 'sortBy': {'dt': 1},
@@ -65,7 +65,7 @@ async def get_data(message: types.Message):
             answer['dataset'].append(entity['value'])
             answer['labels'].append(entity['_id'])
 
-        await message.answer(answer)
+        await message.answer(json.dumps(answer))
     else:
         await message.answer('Not valid input')
 
