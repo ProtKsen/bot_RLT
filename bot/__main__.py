@@ -1,13 +1,15 @@
 import asyncio
 import json
 import logging
+from datetime import datetime, timedelta
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.dispatcher.filters import Command
 
 from bot.config import config
 from bot.db import get_db
 from bot.validators import is_input_valid
-from datetime import datetime, timedelta
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 

@@ -1,7 +1,6 @@
 import datetime
 import json
 
-
 ALLOWED_GROUP_TYPE = ['hour', 'day', 'month']
 
 
