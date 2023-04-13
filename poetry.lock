@@ -161,6 +161,26 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "motor"
+version = "3.1.2"
+description = "Non-blocking MongoDB driver for Tornado or asyncio"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+pymongo = ">=4.1,<5"
+
+[package.extras]
+aws = ["pymongo[aws] (>=4.1,<5)"]
+encryption = ["pymongo[encryption] (>=4.1,<5)"]
+gssapi = ["pymongo[gssapi] (>=4.1,<5)"]
+ocsp = ["pymongo[ocsp] (>=4.1,<5)"]
+snappy = ["pymongo[snappy] (>=4.1,<5)"]
+srv = ["pymongo[srv] (>=4.1,<5)"]
+zstd = ["pymongo[zstd] (>=4.1,<5)"]
+
+[[package]]
 name = "multidict"
 version = "6.0.4"
 description = "multidict implementation"
@@ -284,7 +304,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "7e752ee7863beee144dad875df68df047e87a3c5f46eabf34532b471402fac24"
+content-hash = "1fc92194283f83e7facdba89849d508a6260eb5dc2419c2cfbcae8902ce46d2d"
 
 [metadata.files]
 aiogram = []
@@ -301,6 +321,7 @@ frozenlist = []
 idna = []
 magic-filter = []
 mccabe = []
+motor = []
 multidict = []
 mypy = []
 mypy-extensions = []

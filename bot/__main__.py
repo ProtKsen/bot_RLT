@@ -63,7 +63,7 @@ async def get_data(message: types.Message):
 
         answer = {'dataset': [], 'labels': []}
 
-        for entity in query:
+        for entity in await query.to_list(None):
             answer['dataset'].append(entity['value'])
             answer['labels'].append(entity['_id'])
 
